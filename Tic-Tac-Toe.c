@@ -33,7 +33,7 @@ int main() {
         printf("================\n");
 
         printf("Enter your choise\n");
-        printf("1. Single Player\n2. Two Player\n3. Exit\n");
+        printf("1. One Player (vs computer)\n2. Two Player\n3. Exit\n");
         scanf("%s", &gamemode);
 
         if(gamemode == '1')
@@ -211,20 +211,24 @@ int playComp(int co, char p1, char p2) {
         }
 
         if(box[1][1] == p1 && (box[0][0] == p1 || box[2][2] == p1)) {
-            if(box[0][2] == '-')
+            if(box[0][2] == '-') {
                 box[0][2] = p2;
-            else if(box[2][0] == '-')
+                return 0;
+            }
+            else if(box[2][0] == '-') {
                 box[2][0] = p2;
-
-            return 0;
+                return 0;
+            }
         }
         else if(box[1][1] == p1 && (box[2][0] == p1 || box[0][2] == p1)) {
-            if(box[0][0] == '-')
+            if(box[0][0] == '-') {
                 box[0][0] = p2;
-            else if(box[2][2] == '-')
-                box[2][2] = p2;
-
-            return 0;
+                return 0;
+            }
+            else if(box[2][2] == '-') {
+                box[2][2] = p2; 
+                return 0;
+            }
         }
 
         while(1) {
